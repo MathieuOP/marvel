@@ -1,0 +1,2 @@
+export const ON_CHANGE = 'ON_CHANGE';
+export const RECEIVED_DATA_HEROES = 'RECEIVED_DATA_HEROES';

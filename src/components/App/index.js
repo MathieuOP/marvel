@@ -1,10 +1,12 @@
 import React from 'react';
-import './App.css';
+import './App.scss';
 
-function App() {
+import Search from 'containers/Search';
+
+const App = () => {
   return (
     <div className="App">
-      <h1>Marvel</h1>
+      <Search />
     </div>
   );
 }
