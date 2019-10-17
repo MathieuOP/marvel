@@ -6,7 +6,7 @@ import {
 const initialState = {
   heroes: [],
   inputValue: '',
-  loading: false
+  loading: false,
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -14,8 +14,9 @@ const reducer = (state = initialState, action = {}) => {
         case ON_CHANGE:
             return {
                 ...state,
-                loading: true,
-                inputValue: action.inputValue
+                loading: action.inputValue === '' ? false : true,
+                inputValue: action.inputValue,
+                heroes: action.inputValue === '' ? [] : [...state.heroes],
             }
         case RECEIVED_DATA_HEROES:
             return {

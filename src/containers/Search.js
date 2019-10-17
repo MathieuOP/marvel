@@ -4,7 +4,9 @@ import Search from 'components/Search';
 import { onChange } from 'store/actions';
 
 const mapStateToProps = state => ({
-    inputValue: state.inputValue
+    inputValue: state.inputValue,
+    loading: state.loading,
+    heroes: state.heroes,
 });
 
 const mapDispatchToProps = dispatch => ({

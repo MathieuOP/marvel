@@ -1,0 +1,12 @@
+.results {
+    color: #fff;
+    margin: 100px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+    @media (min-width: 768px) { 
+        margin: 100px 50px;
+    }
+}

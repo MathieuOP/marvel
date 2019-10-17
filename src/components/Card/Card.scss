@@ -1,0 +1,50 @@
+.card {
+    width: calc(100% - 40px);
+    margin: 20px 0;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    color: #000;
+    overflow: hidden;
+
+    @media (min-width: 576px) { 
+        width: calc(100% / 2 - 40px);
+        margin: 20px;
+    }
+
+    @media (min-width: 992px) {
+        width: calc(100% / 3 - 40px);
+    }
+
+    @media (min-width: 1200px) {
+        width: calc(100% / 4 - 40px);
+    }
+
+    @media (min-width: 1600px) {
+        width: calc(100% / 5 - 40px);
+    }
+
+    &:hover {
+        transform: scale(1.1);
+        transition: 0.5s;
+    }
+
+    &__image {
+        width: 100%;
+        height: 400px;
+
+        &--img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    &__name {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        font-size: 1.5em;
+        padding: 0 20px;
+        background-color: #fff;
+        height: 100px;
+    }
+}

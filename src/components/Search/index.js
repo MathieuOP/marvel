@@ -1,16 +1,30 @@
 import React from 'react';
+import SearchResults from 'components/SearchResults';
+import Loading from 'components/Loading';
+import NoResultFound from 'components/NoResultFound';
 import './Search.scss';
 
-const Search = ({ onChange, inputValue }) => {
-
+const Search = ({ onChange, inputValue, heroes, loading }) => {
 
     const handleChange = (e) => {
-        onChange(e.currentTarget.value)
+        onChange(e.currentTarget.value);
     }
 
     return (
         <div className="search">
-            <input className="search__input" onChange={handleChange} type="text" value={inputValue} placeholder="Search heroes" />
+            <div className="search__bar">
+                <input className="search__input" onChange={handleChange} type="text" value={inputValue} placeholder="Search heroes" />
+            </div>  
+
+            {    
+                loading ? (
+                    <Loading />
+                ) : inputValue !== '' && heroes.length === 0 ? (
+                    <NoResultFound />
+                ) : (
+                    <SearchResults heroes={heroes} />
+                )
+            }
         </div>
     );
 };

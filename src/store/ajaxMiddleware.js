@@ -4,21 +4,21 @@ import {
 } from './types';
 import { receivedDataHeroes } from './actions';
 
-const CancelToken = axios.CancelToken;
-let wj_cancel;
+// const CancelToken = axios.CancelToken;
+// let wj_cancel;
 
 const ajaxMiddleware = store => next => action => {
   switch (action.type) {
     case ON_CHANGE:
       next(action);
       if (action.inputValue === '') return;
-      wj_cancel && wj_cancel();
+      // wj_cancel && wj_cancel();
 
       return axios.get('https://gateway.marvel.com/v1/public/characters',
         {
-          cancelToken: new CancelToken(function executor(c) {
-            wj_cancel = c;
-          }),
+          // cancelToken: new CancelToken(function executor(c) {
+          //   wj_cancel = c;
+          // }),
           params: {
             apikey: '001ac6c73378bbfff488a36141458af2',
             ts: 'thesoer',
