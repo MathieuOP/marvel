@@ -5,7 +5,7 @@ import { onChange } from 'store/actions';
 
 const mapStateToProps = state => ({
     inputValue: state.inputValue,
-    loading: state.loading,
+    loadingSearch: state.loadingSearch,
     heroes: state.heroes,
 });
 

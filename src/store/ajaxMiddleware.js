@@ -1,24 +1,25 @@
 import axios from 'axios';
 import {
   ON_CHANGE,
+  GET_HERO_BY_ID
 } from './types';
 import { receivedDataHeroes } from './actions';
 
-// const CancelToken = axios.CancelToken;
-// let wj_cancel;
+const CancelToken = axios.CancelToken;
+let cancel;
 
 const ajaxMiddleware = store => next => action => {
   switch (action.type) {
     case ON_CHANGE:
       next(action);
       if (action.inputValue === '') return;
-      // wj_cancel && wj_cancel();
 
+      cancel && cancel();
       return axios.get('https://gateway.marvel.com/v1/public/characters',
         {
-          // cancelToken: new CancelToken(function executor(c) {
-          //   wj_cancel = c;
-          // }),
+          cancelToken: new CancelToken(function executor(c) {
+            cancel = c;
+          }),
           params: {
             apikey: '001ac6c73378bbfff488a36141458af2',
             ts: 'thesoer',
@@ -38,6 +39,26 @@ const ajaxMiddleware = store => next => action => {
         } else {
           console.log('err');
         }
+      });
+    case GET_HERO_BY_ID:
+      return axios.get(`https://gateway.marvel.com/v1/public/characters/${action.heroId}`,
+        {
+          params: {
+            apikey: '001ac6c73378bbfff488a36141458af2',
+            ts: 'thesoer',
+            hash: '72e5ed53d1398abb831c3ceec263f18b',
+          },
+        }
+      )
+      .then(({data}) => {
+        const dataHero = data.data.results.find(data => data.id === Number(action.heroId));
+        next({
+          ...action,
+          dataHero,
+        })
+      })
+      .catch(err => {
+          console.log('err');
       });
     default:
       return next(action);

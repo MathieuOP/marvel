@@ -27,6 +27,11 @@
         transition: 0.5s;
     }
 
+    &__link {
+        text-decoration: none;
+        color: #000;
+    }
+
     &__image {
         width: 100%;
         height: 400px;

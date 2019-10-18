@@ -1,12 +1,27 @@
 import React from 'react';
+import { Switch, Route } from "react-router-dom";
+
 import './App.scss';
 
 import Search from 'containers/Search';
+import Hero from 'containers/Hero';
 
 const App = () => {
   return (
     <div className="App">
-      <Search />
+      <Switch>
+        <Route exact component={Search} path="/"/>
+
+        <Route
+          exact
+          path="/hero/:heroId"
+          render={({ match }) => {
+            const { heroId } = match.params;
+
+            return <Hero heroId={heroId} />;
+          }}
+      />
+      </Switch>
     </div>
   );
 }
