@@ -5,6 +5,7 @@ import './App.scss';
 
 import Search from 'containers/Search';
 import Hero from 'containers/Hero';
+import Error404 from 'components/Error404';
 
 const App = () => {
   return (
@@ -20,7 +21,8 @@ const App = () => {
 
             return <Hero heroId={heroId} />;
           }}
-      />
+        />
+        <Route component={Error404} />
       </Switch>
     </div>
   );
