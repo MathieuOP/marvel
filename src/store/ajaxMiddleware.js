@@ -3,7 +3,7 @@ import {
   ON_CHANGE,
   GET_HERO_BY_ID
 } from './types';
-import { receivedDataHeroes } from './actions';
+import { receivedDataHeroes, error404 } from './actions';
 
 const CancelToken = axios.CancelToken;
 let cancel;
@@ -41,7 +41,8 @@ const ajaxMiddleware = store => next => action => {
         }
       });
     case GET_HERO_BY_ID:
-      return axios.get(`https://gateway.marvel.com/v1/public/characters/${action.heroId}`,
+      const heroId = Number(action.heroId);
+      return axios.get(`https://gateway.marvel.com/v1/public/characters/${heroId}`,
         {
           params: {
             apikey: '001ac6c73378bbfff488a36141458af2',
@@ -51,14 +52,15 @@ const ajaxMiddleware = store => next => action => {
         }
       )
       .then(({data}) => {
-        const dataHero = data.data.results.find(data => data.id === Number(action.heroId));
+        const dataHero = data.data.results.find(data => data.id === heroId);
+        
         next({
           ...action,
           dataHero,
         })
       })
       .catch(err => {
-          console.log('err');
+        if (err.response.status === 404) store.dispatch(error404());
       });
     default:
       return next(action);

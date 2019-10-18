@@ -1,16 +1,20 @@
 import React from 'react';
-import { Switch, Route, BrowserRouter as Router  } from "react-router-dom";
-
+import PropTypes from 'prop-types';
+import { Switch, Route, Redirect } from "react-router-dom";
 import './App.scss';
-
 import Search from 'containers/Search';
 import Hero from 'containers/Hero';
 import Error404 from 'components/Error404';
 
-const App = () => {
+const App = ({ error404 }) => {
   return (
     <div className="App">
-      <Router>
+        {
+          error404 && (
+            <Redirect to="/not-found" />
+          )
+        }
+
         <Switch>
           <Route exact component={Search} path="/"/>
 
@@ -25,9 +29,12 @@ const App = () => {
           />
           <Route component={Error404} />
         </Switch>
-      </Router>
     </div>
   );
 }
+
+App.propTypes = {
+  error404: PropTypes.bool.isRequired
+};
 
 export default App;

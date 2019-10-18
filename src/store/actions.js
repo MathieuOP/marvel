@@ -2,7 +2,8 @@ import {
     ON_CHANGE,
     RECEIVED_DATA_HEROES,
     GET_HERO_BY_ID,
-    REMOVE_HERO
+    REMOVE_HERO,
+    ERROR_404
 } from './types';
 
 export const onChange = inputValue => ({
@@ -22,4 +23,8 @@ export const getHeroById = heroId => ({
 
 export const removeHero = () => ({
     type: REMOVE_HERO,
+});
+
+export const error404 = () => ({
+    type: ERROR_404,
 });

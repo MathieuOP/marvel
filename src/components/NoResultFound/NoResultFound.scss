@@ -1,8 +1,14 @@
 .result--notFound {
     color: #fff;
-    font-size: 3em;
+    font-size: 2em;
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%,-50%);
+    width: 100%;
+    text-align: center;
+
+    @media (min-width: 576px) { 
+        font-size: 3em;
+    }
 }
