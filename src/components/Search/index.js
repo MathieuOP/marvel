@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import SearchResults from 'components/SearchResults';
 import Loading from 'components/Loading';
 import NoResultFound from 'components/NoResultFound';
@@ -25,6 +26,13 @@ const Search = ({ onChange, inputValue, heroes, loadingSearch }) => {
             }
         </div>
     );
+};
+
+Search.propTypes = {
+    onChange: PropTypes.func.isRequired,
+    inputValue: PropTypes.string.isRequired,
+    heroes: PropTypes.array.isRequired,
+    loadingSearch: PropTypes.bool.isRequired,
 };
 
 export default Search;

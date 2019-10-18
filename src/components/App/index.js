@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, BrowserRouter as Router  } from "react-router-dom";
 
 import './App.scss';
 
@@ -10,20 +10,22 @@ import Error404 from 'components/Error404';
 const App = () => {
   return (
     <div className="App">
-      <Switch>
-        <Route exact component={Search} path="/"/>
+      <Router>
+        <Switch>
+          <Route exact component={Search} path="/"/>
 
-        <Route
-          exact
-          path="/hero/:heroId"
-          render={({ match }) => {
-            const { heroId } = match.params;
+          <Route
+            exact
+            path="/hero/:heroId"
+            render={({ match }) => {
+              const { heroId } = match.params;
 
-            return <Hero heroId={heroId} />;
-          }}
-        />
-        <Route component={Error404} />
-      </Switch>
+              return <Hero heroId={heroId} />;
+            }}
+          />
+          <Route component={Error404} />
+        </Switch>
+      </Router>
     </div>
   );
 }

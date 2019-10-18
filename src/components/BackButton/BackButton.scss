@@ -1,0 +1,21 @@
+.back {
+    display: flex;
+    justify-content: center;
+
+    &__link {
+        text-decoration: none;
+        padding: 20px;
+        background-color: #fff;
+        color: #000;
+        border-radius: 10px;
+        font-size: 1.2em;
+        border: 2px solid #fff;
+
+        &:hover {
+            background-color: #ED1D24;
+            border-color: #fff;
+            color: #fff;
+            transition: .3s;
+        }
+    }
+}
