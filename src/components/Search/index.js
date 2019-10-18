@@ -31,7 +31,7 @@ const Search = ({ onChange, inputValue, heroes, loadingSearch }) => {
 Search.propTypes = {
     onChange: PropTypes.func.isRequired,
     inputValue: PropTypes.string.isRequired,
-    heroes: PropTypes.array.isRequired,
+    heroes: PropTypes.arrayOf(PropTypes.object).isRequired,
     loadingSearch: PropTypes.bool.isRequired,
 };
 

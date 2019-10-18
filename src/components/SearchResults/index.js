@@ -19,7 +19,7 @@ const SearchResults = ({ heroes }) => (
 );
 
 SearchResults.propTypes = {
-    heroes: PropTypes.array.isRequired,
+    heroes: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default SearchResults;
